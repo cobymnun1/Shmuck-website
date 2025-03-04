@@ -35,4 +35,23 @@ document.addEventListener('DOMContentLoaded', () => {
         feature.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
         observer.observe(feature);
     });
+
+    // Copy contract address functionality
+    const contractAddress = document.getElementById('contract-address');
+    const copyHint = document.querySelector('.copy-hint');
+    
+    if (contractAddress && copyHint) {
+        contractAddress.addEventListener('click', async function() {
+            try {
+                await navigator.clipboard.writeText(contractAddress.textContent);
+                const originalText = copyHint.textContent;
+                copyHint.textContent = 'Copied!';
+                setTimeout(() => {
+                    copyHint.textContent = originalText;
+                }, 2000);
+            } catch (err) {
+                console.error('Failed to copy text: ', err);
+            }
+        });
+    }
 }); 
