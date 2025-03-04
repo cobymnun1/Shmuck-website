@@ -48,15 +48,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Buy Now button animation
-    const buyButton = document.querySelector('.buy-now');
-    if (buyButton) {
-        buyButton.addEventListener('click', () => {
-            // Add your buy functionality here
-            window.open('https://pancakeswap.finance/swap', '_blank');
-        });
-    }
-
     // Add scroll animation for features
     const features = document.querySelectorAll('.feature');
     const observer = new IntersectionObserver((entries) => {
