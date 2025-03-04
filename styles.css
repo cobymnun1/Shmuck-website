@@ -346,4 +346,16 @@ footer {
     color: #FFD700;
     margin-top: 10px;
     text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+.countdown-buy {
+    display: inline-block;
+    margin-top: 20px;
+    text-decoration: none;
+    animation: pulse 2s infinite;
+}
+
+.countdown-buy:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
 } 

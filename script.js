@@ -1,4 +1,43 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Countdown Timer
+    const countdownElement = document.getElementById('countdown');
+    const countdownSection = document.querySelector('.countdown-section');
+    const launchTime = new Date('2025-03-03T23:59:00-05:00').getTime(); // March 3rd, 11:59 PM EST
+
+    function updateCountdown() {
+        const now = new Date().getTime();
+        const distance = launchTime - now;
+
+        if (distance <= 0) {
+            // Launch time has passed
+            countdownElement.innerHTML = 'LAUNCHED!';
+            countdownSection.innerHTML = `
+                <h2>LAUNCHED!</h2>
+                <div class="countdown-timer">
+                    <p>The foolishness has begun!</p>
+                    <div id="countdown">LAUNCHED!</div>
+                    <a href="https://raydium.io/swap/?inputCurrency=sol&outputCurrency=DZJoPJHSXQYJYoQv7iiPikTEodx4TnNhn6nEWnz161Qh" 
+                       target="_blank" 
+                       class="buy-now countdown-buy">
+                        BUY NOW ON RAYDIUM
+                    </a>
+                </div>
+            `;
+        } else {
+            // Calculate remaining time
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            countdownElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+        }
+    }
+
+    // Update countdown every second
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
     // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
